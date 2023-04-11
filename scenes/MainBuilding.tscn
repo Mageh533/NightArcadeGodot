@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bitkfjmjpti6s"]
+
+[ext_resource type="PackedScene" uid="uid://b2pi2q24hy8t1" path="res://scenes/controllers/firstPersonController.tscn" id="1_8jfdd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iltky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d7vx"]
+size = Vector3(8.91487, 1, 5.10358)
+
+[sub_resource type="Environment" id="Environment_f1ctd"]
+
+[node name="MainBuilding" type="Node"]
+
+[node name="firstPersonController" parent="." instance=ExtResource("1_8jfdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92827, 0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0266552, -2.38419e-06, -0.0321655)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(8.98064, 0, 0, 0, 1, 0, 0, 0, 5.12039, 0, 0, 0)
+mesh = SubResource("BoxMesh_iltky")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_4d7vx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1ctd")
