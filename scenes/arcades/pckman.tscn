@@ -1,16 +1,104 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi6x5obapwo8f"]
+[gd_scene load_steps=18 format=3 uid="uid://bi6x5obapwo8f"]
 
 [ext_resource type="Script" path="res://scripts/arcadeScripts/pckmanPlayer.gd" id="1_4vu2s"]
-[ext_resource type="Texture2D" uid="uid://cv0hfkcw30u5l" path="res://content/icon.svg" id="2_w3tqg"]
+[ext_resource type="Texture2D" uid="uid://bkm2vd82b4rsy" path="res://content/tilemap/tiles set 64.png" id="1_tjjve"]
+[ext_resource type="Texture2D" uid="uid://c710348knk0ux" path="res://content/2dSprites/pckman_down1.png" id="2_cuqw0"]
+[ext_resource type="Texture2D" uid="uid://mfaiwt0gmct5" path="res://content/2dSprites/pckman_down2.png" id="3_skqj6"]
+[ext_resource type="Texture2D" uid="uid://d1udrm62t4js" path="res://content/2dSprites/pckman_down3.png" id="4_aymno"]
+[ext_resource type="Texture2D" uid="uid://bbvvjt22jiutk" path="res://content/2dSprites/pckman_idle.png" id="5_ne2oq"]
+[ext_resource type="Texture2D" uid="uid://d2p35r6ukvmrb" path="res://content/2dSprites/pckman_side1.png" id="6_o0xwj"]
+[ext_resource type="Texture2D" uid="uid://das1q34poj6gi" path="res://content/2dSprites/pckman_side2.png" id="7_v3svr"]
+[ext_resource type="Texture2D" uid="uid://7dd0iycgtnjf" path="res://content/2dSprites/pckman_side3.png" id="8_ff50m"]
+[ext_resource type="Texture2D" uid="uid://bdpm8eg31dor5" path="res://content/2dSprites/pckman_up1.png" id="9_dx0ad"]
+[ext_resource type="Texture2D" uid="uid://dwmxma6o0ct86" path="res://content/2dSprites/pckman_up2.png" id="10_rua4c"]
+[ext_resource type="Texture2D" uid="uid://bnqnk2ur05cqu" path="res://content/2dSprites/pckman_up3.png" id="11_6t2l8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bya6i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44iyx"]
+texture = ExtResource("1_tjjve")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_e2w6y"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_bya6i")
+sources/1 = SubResource("TileSetAtlasSource_44iyx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_texob"]
-radius = 35.0143
+radius = 26.0192
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eyj6v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w3tqg")
+"texture": ExtResource("2_cuqw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_skqj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aymno")
+}],
+"loop": true,
+"name": &"downMove",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ne2oq")
 }],
 "loop": true,
 "name": &"idle",
@@ -18,38 +106,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w3tqg")
+"texture": ExtResource("6_o0xwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v3svr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ff50m")
 }],
 "loop": true,
-"name": &"move",
-"speed": 5.0
+"name": &"sideMove",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dx0ad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rua4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6t2l8")
+}],
+"loop": true,
+"name": &"upMove",
+"speed": 15.0
 }]
 
 [node name="pckman" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1912.0
-offset_bottom = 1077.0
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.203922, 0.0784314, 0.301961)
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-1, 3)
+tile_set = SubResource("TileSet_e2w6y")
+cell_quadrant_size = 64
+format = 2
+layer_0/tile_data = PackedInt32Array(393218, 131073, 0, 524290, 131073, 0, 393219, 131073, 0, 524291, 131073, 0, 65540, 65537, 1, 131076, 1, 1, 196612, 1, 1, 262148, 1, 1, 327684, 1, 1, 393220, 131073, 2, 524292, 131073, 1, 589828, 1, 1, 655364, 1, 1, 720900, 1, 1, 786436, 1, 1, 851972, 1, 1, 917508, 65537, 2, 65541, 131073, 0, 917509, 131073, 0, 65542, 131073, 0, 917510, 131073, 0, 65543, 131073, 0, 917511, 131073, 0, 65544, 131073, 0, 917512, 131073, 0, 65545, 131073, 0, 917513, 131073, 0, 65546, 262145, 1, 262154, 1, 0, 327690, 1, 1, 589834, 1, 1, 917514, 196609, 2, 65547, 131073, 0, 917515, 131073, 0, 65548, 131073, 0, 393228, 65537, 1, 458764, 1, 1, 524300, 65537, 2, 655372, 1, 0, 720908, 1, 1, 786444, 65537, 2, 917516, 131073, 0, 65549, 131073, 0, 393229, 196609, 0, 524301, 131073, 0, 786445, 196609, 0, 917517, 131073, 0, 65550, 262145, 1, 524302, 262145, 1, 589838, 1, 1, 655374, 1, 2, 917518, 131073, 0, 65551, 131073, 0, 393231, 65537, 0, 524303, 131073, 0, 786447, 65537, 0, 917519, 131073, 0, 65552, 131073, 0, 393232, 131073, 1, 458768, 1, 1, 524304, 131073, 2, 655376, 1, 0, 720912, 1, 1, 786448, 131073, 2, 917520, 131073, 0, 65553, 131073, 0, 917521, 131073, 0, 65554, 262145, 1, 262162, 1, 0, 327698, 1, 1, 393234, 1, 2, 589842, 1, 1, 917522, 196609, 2, 65555, 131073, 0, 917523, 131073, 0, 65556, 131073, 0, 917524, 131073, 0, 65557, 131073, 0, 917525, 131073, 0, 65558, 131073, 0, 917526, 131073, 0, 65559, 131073, 0, 917527, 131073, 0, 65560, 131073, 1, 131096, 1, 1, 196632, 1, 1, 262168, 1, 1, 327704, 1, 1, 393240, 65537, 2, 524312, 65537, 1, 589848, 1, 1, 655384, 1, 1, 720920, 1, 1, 786456, 1, 1, 851992, 1, 1, 917528, 131073, 2, 393241, 131073, 0, 524313, 131073, 0, 393242, 131073, 0, 524314, 131073, 0, 262164, 65537, 2, 262165, 131073, 0, 262166, 131073, 2, 196630, 131073, 1, 196628, 65537, 1, 196629, 131073, 0, 524298, 1, 0, 524306, 1, 0, 393226, 1, 2, 393222, 1, 0, 458758, 1, 1, 524294, 196609, 1, 589830, 1, 2, 524295, 131073, 0, 393224, 1, 3, 393236, 1, 3, 524308, 65537, 0, 524310, 262145, 2, 524309, 131073, 0, 589846, 1, 2, 458774, 1, 1, 393238, 1, 0, 524296, 196609, 0, 851978, 1, 1, 851986, 1, 1, 786450, 1, 0, 786442, 1, 0, 655370, 131073, 2, 655369, 131073, 0, 655368, 65537, 0, 720902, 1, 0, 786438, 65537, 2, 786439, 131073, 0, 786440, 196609, 0, 786452, 65537, 0, 786453, 131073, 0, 786454, 131073, 2, 720918, 1, 0, 655378, 65537, 2, 655379, 131073, 0, 655380, 196609, 0, 196614, 65537, 1, 262150, 65537, 2, 196615, 131073, 0, 196616, 131073, 1, 262152, 131073, 2, 262151, 131073, 0, 131086, 1, 1, 196622, 1, 1, 131082, 1, 2, 131090, 1, 2, 196620, 1, 0, 196624, 1, 0, 262160, 1, 2, 262156, 1, 2, 262158, 1, 2)
 
 [node name="Player" type="Area2D" parent="."]
-position = Vector2(554, 295)
+position = Vector2(926, 804)
+collision_mask = 6
 script = ExtResource("1_4vu2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_texob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -5)
+scale = Vector2(0.0756836, 0.0751953)
 sprite_frames = SubResource("SpriteFrames_eyj6v")
 animation = &"idle"

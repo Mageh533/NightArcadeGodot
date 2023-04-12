@@ -20,15 +20,21 @@ func keyboardControls(delta):
 	if(Input.is_action_pressed("arcade_up")):
 		velocity.x = 0
 		velocity.y = -1
+		$AnimatedSprite2D.play("upMove")
 	if(Input.is_action_pressed("arcade_down")):
 		velocity.x = 0
 		velocity.y = 1
+		$AnimatedSprite2D.play("downMove")
 	if(Input.is_action_pressed("arcade_left")):
 		velocity.x = -1
 		velocity.y = 0
+		$AnimatedSprite2D.play("sideMove")
+		$AnimatedSprite2D.flip_h = true
 	if(Input.is_action_pressed("arcade_right")):
 		velocity.x = 1
 		velocity.y = 0
+		$AnimatedSprite2D.play("sideMove")
+		$AnimatedSprite2D.flip_h = false
 	
 	if(velocity.length() > 0):
 		velocity = velocity.normalized() * speed
