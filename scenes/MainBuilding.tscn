@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bitkfjmjpti6s"]
+[gd_scene load_steps=18 format=3 uid="uid://bitkfjmjpti6s"]
 
 [ext_resource type="PackedScene" uid="uid://bi6x5obapwo8f" path="res://scenes/arcades/pckman.tscn" id="1_gfd2x"]
 [ext_resource type="PackedScene" uid="uid://b0wopnkn01mq5" path="res://content/retro_arcade_cabinet/scene.gltf" id="2_8pxdp"]
@@ -7,15 +7,8 @@
 [ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColors.gd" id="4_mg83p"]
 [ext_resource type="VoxelGIData" uid="uid://p4a5h6dxkbuk" path="res://scenes/MainBuilding.VoxelGI_data.res" id="5_sjuno"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5jus1"]
-viewport_path = NodePath("ArcadeGameViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh2cu"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_5jus1")
-uv1_scale = Vector3(5.6, -6.569, 0)
-uv1_offset = Vector3(-0.445, 1.883, 0)
-uv1_world_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ets56"]
+albedo_color = Color(1, 1, 1, 0.290196)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_udosr"]
 _surfaces = [{
@@ -90,8 +83,8 @@ frustum_far = 15.55
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.252543, 0.499998, -1.78296)
 
 [node name="cabinetScreen" type="MeshInstance3D" parent="MainCabinet"]
-transform = Transform3D(0.64, -0.000108484, -0.000293193, 0.000293191, -9.53125e-06, 0.64, -0.000108488, -0.64, -9.48163e-06, 0.272115, 1.78968, -1.53611)
-material_override = SubResource("StandardMaterial3D_hh2cu")
+transform = Transform3D(0.639976, -0.000108566, 0.00549286, -0.00549286, -8.55009e-06, 0.639976, -0.000108488, -0.64, -9.48162e-06, 0.270004, 1.79126, -1.54581)
+material_override = SubResource("StandardMaterial3D_ets56")
 mesh = SubResource("ArrayMesh_f4400")
 skeleton = NodePath("../..")
 
@@ -166,7 +159,7 @@ omni_range = 0.541955
 script = ExtResource("3_5kj25")
 
 [node name="ArcadeGameViewport" type="SubViewport" parent="."]
-size = Vector2i(977, 648)
+size = Vector2i(1811, 1024)
 
 [node name="pckman" parent="ArcadeGameViewport" instance=ExtResource("1_gfd2x")]
 

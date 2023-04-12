@@ -1,10 +1,8 @@
-extends Area2D
+extends CharacterBody2D
 
 signal hit
 
 @export var speed = 400
-var direction = 0
-var velocity = Vector2.ZERO
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +37,9 @@ func keyboardControls(delta):
 	if(velocity.length() > 0):
 		velocity = velocity.normalized() * speed
 	
-	position += velocity * delta
+	move_and_slide()
 	position.y = clamp(position.y, 0, screen_size.y)
 	position.x = clamp(position.x, 0, screen_size.x)
+
+func start(startPos):
+	position = startPos
