@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bitkfjmjpti6s"]
+[gd_scene load_steps=24 format=3 uid="uid://bitkfjmjpti6s"]
 
 [ext_resource type="PackedScene" uid="uid://bi6x5obapwo8f" path="res://scenes/arcades/pckman.tscn" id="1_gfd2x"]
 [ext_resource type="PackedScene" uid="uid://b0wopnkn01mq5" path="res://content/retro_arcade_cabinet/scene.gltf" id="2_8pxdp"]
@@ -9,15 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://dnju48h6gnx3o" path="res://content/retro_arcade_cabinet/textures/cabinetScreen_HiPo_normal.png" id="4_3al6r"]
 [ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColors.gd" id="4_mg83p"]
 [ext_resource type="VoxelGIData" uid="uid://p4a5h6dxkbuk" path="res://scenes/MainBuilding.VoxelGI_data.res" id="5_sjuno"]
+[ext_resource type="Shader" path="res://scripts/shaders/MainBuilding.gdshader" id="7_0cycw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ets56"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.301961)
+albedo_color = Color(0, 0, 0, 0.619608)
 albedo_texture = ExtResource("2_jc3j5")
 metallic = 1.0
+metallic_specular = 1.0
 metallic_texture = ExtResource("3_833qu")
+roughness = 0.5
 roughness_texture = ExtResource("3_833qu")
+emission = Color(0, 0.396078, 1, 1)
+emission_energy_multiplier = 0.09
 normal_enabled = true
+normal_scale = 10.2
 normal_texture = ExtResource("4_3al6r")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_udosr"]
@@ -70,6 +76,30 @@ viewport_path = NodePath("FakeArcadeViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2551t"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_1s14d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6p5f"]
+shader = ExtResource("7_0cycw")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 6.304
+shader_parameter/roll_variation = 0.1
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Environment" id="Environment_f1ctd"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -150,14 +180,6 @@ mesh = SubResource("ArrayMesh_f4400")
 
 [node name="Lighting" type="Node3D" parent="."]
 
-[node name="CabinetLight" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262561, 1.76696, -1.75169)
-light_color = Color(0.960784, 0.972549, 0.964706, 1)
-light_energy = 0.071
-light_size = 1.0
-light_specular = 1.199
-omni_range = 0.511114
-
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -0.035353, 0.999375, 0, -0.999375, -0.035353, 0.54235, 3.57769, -2.68248)
 light_energy = 3.01
@@ -175,10 +197,33 @@ light_specular = 2.76
 omni_range = 0.541955
 script = ExtResource("3_5kj25")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236213, 1.82078, -1.61049)
+light_energy = 1.7
+omni_range = 0.409382
+
 [node name="ArcadeGameViewport" type="SubViewport" parent="."]
 size = Vector2i(1811, 1024)
 
 [node name="pckman" parent="ArcadeGameViewport" instance=ExtResource("1_gfd2x")]
+
+[node name="CRTScreen" type="Control" parent="ArcadeGameViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shader" type="ColorRect" parent="ArcadeGameViewport/CRTScreen"]
+material = SubResource("ShaderMaterial_i6p5f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.352941)
 
 [node name="FakeArcadeViewport" type="SubViewport" parent="."]
 
@@ -208,6 +253,8 @@ far = 17.58
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507268, 2.13015, -5.49492)
 size = Vector3(8.38035, 4.19046, 8.67365)
 data = ExtResource("5_sjuno")
+
+[node name="EmissiveSphere" type="MeshInstance3D" parent="."]
 
 [connection signal="colorChanged" from="FakeArcadeViewport/ColorRect" to="Lighting/FakeCabinetLight" method="_on_color_rect_color_changed"]
 [connection signal="timeout" from="FakeArcadeViewport/ColorRect/Timer" to="FakeArcadeViewport/ColorRect" method="_on_timer_timeout"]

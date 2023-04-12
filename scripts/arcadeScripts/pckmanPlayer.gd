@@ -15,20 +15,20 @@ func _process(delta):
 
 # Contiunos movement with no stop
 func keyboardControls(delta):
-	if(Input.is_action_pressed("arcade_up")):
+	if(Input.is_action_pressed("arcade_up") and !$RayCasting/RayUpLeft.is_colliding() and !$RayCasting/RayUpRight.is_colliding()):
 		velocity.x = 0
 		velocity.y = -1
 		$AnimatedSprite2D.play("upMove")
-	if(Input.is_action_pressed("arcade_down")):
+	if(Input.is_action_pressed("arcade_down") and !$RayCasting/RayDownLeft.is_colliding() and !$RayCasting/RayDownRight.is_colliding()):
 		velocity.x = 0
 		velocity.y = 1
 		$AnimatedSprite2D.play("downMove")
-	if(Input.is_action_pressed("arcade_left")):
+	if(Input.is_action_pressed("arcade_left") and !$RayCasting/RayLeftUp.is_colliding() and !$RayCasting/RayLeftDown.is_colliding()):
 		velocity.x = -1
 		velocity.y = 0
 		$AnimatedSprite2D.play("sideMove")
 		$AnimatedSprite2D.flip_h = true
-	if(Input.is_action_pressed("arcade_right")):
+	if(Input.is_action_pressed("arcade_right") and !$RayCasting/RayRightUp.is_colliding() and !$RayCasting/RayRightDown.is_colliding()):
 		velocity.x = 1
 		velocity.y = 0
 		$AnimatedSprite2D.play("sideMove")
