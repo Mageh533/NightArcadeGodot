@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bitkfjmjpti6s"]
+[gd_scene load_steps=19 format=3 uid="uid://bitkfjmjpti6s"]
 
 [ext_resource type="PackedScene" uid="uid://bi6x5obapwo8f" path="res://scenes/arcades/pckman.tscn" id="1_gfd2x"]
+[ext_resource type="PackedScene" uid="uid://b0wopnkn01mq5" path="res://content/retro_arcade_cabinet/scene.gltf" id="2_8pxdp"]
+[ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColorsLight.gd" id="3_5kj25"]
 [ext_resource type="PackedScene" uid="uid://dyv848gnjwwib" path="res://content/retro_arcade_cabinet/cabinetNoScreen.glb" id="3_jnyj5"]
+[ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColors.gd" id="4_mg83p"]
+[ext_resource type="VoxelGIData" uid="uid://p4a5h6dxkbuk" path="res://scenes/MainBuilding.VoxelGI_data.res" id="5_sjuno"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5jus1"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("ArcadeGameViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh2cu"]
 resource_local_to_scene = true
@@ -44,55 +48,156 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_udosr")
 
-[sub_resource type="BoxMesh" id="BoxMesh_iltky"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bavbb"]
+albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4d7vx"]
-size = Vector3(8.91487, 1, 5.10358)
+[sub_resource type="BoxMesh" id="BoxMesh_geclo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khknl"]
+albedo_color = Color(0.32549, 0.415686, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqxuj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1s14d"]
+viewport_path = NodePath("FakeArcadeViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2551t"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_1s14d")
 
 [sub_resource type="Environment" id="Environment_f1ctd"]
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 1.15
+ssr_enabled = true
 ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_energy = 0.35
+adjustment_contrast = 1.6
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_idaer"]
+exposure_multiplier = 2.0
+frustum_focus_distance = 2.0
+frustum_focal_length = 166.7
+frustum_near = 10.0
+frustum_far = 15.55
 
 [node name="MainBuilding" type="Node"]
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(977, 648)
+[node name="MainCabinet" type="Node3D" parent="."]
 
-[node name="pckman" parent="SubViewport" instance=ExtResource("1_gfd2x")]
+[node name="cabinetNoScreen" parent="MainCabinet" instance=ExtResource("3_jnyj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.252543, 0.499998, -1.78296)
 
-[node name="Cabinet" type="Node" parent="."]
-
-[node name="cabinetScreen" type="MeshInstance3D" parent="Cabinet"]
+[node name="cabinetScreen" type="MeshInstance3D" parent="MainCabinet"]
 transform = Transform3D(0.64, -0.000108484, -0.000293193, 0.000293191, -9.53125e-06, 0.64, -0.000108488, -0.64, -9.48163e-06, 0.272115, 1.78968, -1.53611)
 material_override = SubResource("StandardMaterial3D_hh2cu")
 mesh = SubResource("ArrayMesh_f4400")
 skeleton = NodePath("../..")
 
-[node name="cabinetNoScreen" parent="Cabinet" instance=ExtResource("3_jnyj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.252543, 0.499998, -1.78296)
+[node name="Structures" type="Node3D" parent="."]
 
-[node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0266552, -2.38419e-06, -0.0321655)
+[node name="FloorMesh" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(5.57724, 0, 0, 0, 0.388373, 0, 0, 0, 6.91691, 0.745301, 0.294569, -4.78259)
+material_override = SubResource("StandardMaterial3D_bavbb")
+mesh = SubResource("BoxMesh_geclo")
 
-[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(8.98064, 0, 0, 0, 1, 0, 0, 0, 5.12039, 0, 0, 0)
-mesh = SubResource("BoxMesh_iltky")
-skeleton = NodePath("../..")
+[node name="FloorMesh2" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(3.27716, 0, 0, 0, 0.388373, 0, 0, 0, 1.80351, -3.65882, 0.294569, -7.33123)
+material_override = SubResource("StandardMaterial3D_bavbb")
+mesh = SubResource("BoxMesh_geclo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_4d7vx")
+[node name="WallMesh" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0.270291, 0, 0, 0, 2.2028, 0, 0, 0, 5.04986, -2.18768, 1.53722, -3.86218)
+material_override = SubResource("StandardMaterial3D_khknl")
+mesh = SubResource("BoxMesh_rqxuj")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_f1ctd")
+[node name="WallMesh3" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(-1.18148e-08, 0, 7.0146, 0, 2.2028, 0, -0.270291, 0, -3.06618e-07, 0.337144, 1.53722, -8.40962)
+material_override = SubResource("StandardMaterial3D_khknl")
+mesh = SubResource("BoxMesh_rqxuj")
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.966376, 0.257133, 0, -0.257133, 0.966376, 0.244825, 2.07871, -0.426778)
-fov = 30.9375
+[node name="WallMesh2" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0.270291, 0, 0, 0, 2.2028, 0, 0, 0, 6.85038, 3.68977, 1.53722, -4.83435)
+material_override = SubResource("StandardMaterial3D_khknl")
+mesh = SubResource("BoxMesh_rqxuj")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OtherCabinets" type="Node3D" parent="."]
+
+[node name="cabinet1" parent="OtherCabinets" instance=ExtResource("2_8pxdp")]
+transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.0284101, -0.034889, 0.445522, -2.65196)
+
+[node name="cabinet2" parent="OtherCabinets" instance=ExtResource("2_8pxdp")]
+transform = Transform3D(0.0656296, 0, 0.997844, 0, 1, 0, -0.997844, 0, 0.0656296, 0.568443, 0.445522, -2.65196)
+
+[node name="cabinet3NoScreen" parent="OtherCabinets" instance=ExtResource("3_jnyj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05423, 0.455201, -7.93761)
+
+[node name="Screen" type="MeshInstance3D" parent="OtherCabinets/cabinet3NoScreen"]
+transform = Transform3D(0.711513, 0, 0, 0, 0.199383, 0.574758, 0, -1.01711, 0.112669, 0.00331235, 1.25927, 0.275786)
+material_override = SubResource("StandardMaterial3D_2551t")
+mesh = SubResource("ArrayMesh_f4400")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="CabinetLight" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262561, 1.88451, -1.40039)
 light_color = Color(0.960784, 0.972549, 0.964706, 1)
 light_energy = 0.071
 light_size = 1.0
+light_specular = 1.199
 omni_range = 0.511114
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.035353, 0.999375, 0, -0.999375, -0.035353, 0.54235, 3.57769, -2.68248)
+light_energy = 3.01
+spot_range = 7.88982
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.035353, 0.999375, 0, -0.999375, -0.035353, 0.21048, 3.74044, -6.85711)
+light_energy = 3.01
+spot_angle = 58.6223
+
+[node name="FakeCabinetLight" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02154, 1.85702, -7.47756)
+light_color = Color(0, 1, 0, 1)
+light_specular = 2.76
+omni_range = 0.541955
+script = ExtResource("3_5kj25")
+
+[node name="ArcadeGameViewport" type="SubViewport" parent="."]
+size = Vector2i(977, 648)
+
+[node name="pckman" parent="ArcadeGameViewport" instance=ExtResource("1_gfd2x")]
+
+[node name="FakeArcadeViewport" type="SubViewport" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FakeArcadeViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.878431, 0, 1)
+script = ExtResource("4_mg83p")
+
+[node name="Timer" type="Timer" parent="FakeArcadeViewport/ColorRect"]
+wait_time = 2.0
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1ctd")
+camera_attributes = SubResource("CameraAttributesPhysical_idaer")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.966376, 0.257133, 0, -0.257133, 0.966376, 0.244825, 2.07871, -0.426778)
+fov = 30.9375
+far = 17.58
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507268, 2.13015, -5.49492)
+size = Vector3(8.38035, 4.19046, 8.67365)
+data = ExtResource("5_sjuno")
+
+[connection signal="colorChanged" from="FakeArcadeViewport/ColorRect" to="Lighting/FakeCabinetLight" method="_on_color_rect_color_changed"]
+[connection signal="timeout" from="FakeArcadeViewport/ColorRect/Timer" to="FakeArcadeViewport/ColorRect" method="_on_timer_timeout"]
