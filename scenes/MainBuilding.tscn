@@ -1,14 +1,24 @@
-[gd_scene load_steps=18 format=3 uid="uid://bitkfjmjpti6s"]
+[gd_scene load_steps=22 format=3 uid="uid://bitkfjmjpti6s"]
 
 [ext_resource type="PackedScene" uid="uid://bi6x5obapwo8f" path="res://scenes/arcades/pckman.tscn" id="1_gfd2x"]
 [ext_resource type="PackedScene" uid="uid://b0wopnkn01mq5" path="res://content/retro_arcade_cabinet/scene.gltf" id="2_8pxdp"]
+[ext_resource type="Texture2D" uid="uid://bygkyp3l66se2" path="res://content/retro_arcade_cabinet/textures/cabinetScreen_HiPo_baseColor.png" id="2_jc3j5"]
 [ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColorsLight.gd" id="3_5kj25"]
+[ext_resource type="Texture2D" uid="uid://c58drj1p6pg50" path="res://content/retro_arcade_cabinet/textures/cabinetScreen_HiPo_metallicRoughness.png" id="3_833qu"]
 [ext_resource type="PackedScene" uid="uid://dyv848gnjwwib" path="res://content/retro_arcade_cabinet/cabinetNoScreen.glb" id="3_jnyj5"]
+[ext_resource type="Texture2D" uid="uid://dnju48h6gnx3o" path="res://content/retro_arcade_cabinet/textures/cabinetScreen_HiPo_normal.png" id="4_3al6r"]
 [ext_resource type="Script" path="res://scripts/arcadeScripts/FakeScreenColors.gd" id="4_mg83p"]
 [ext_resource type="VoxelGIData" uid="uid://p4a5h6dxkbuk" path="res://scenes/MainBuilding.VoxelGI_data.res" id="5_sjuno"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ets56"]
-albedo_color = Color(1, 1, 1, 0.290196)
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.301961)
+albedo_texture = ExtResource("2_jc3j5")
+metallic = 1.0
+metallic_texture = ExtResource("3_833qu")
+roughness_texture = ExtResource("3_833qu")
+normal_enabled = true
+normal_texture = ExtResource("4_3al6r")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_udosr"]
 _surfaces = [{
@@ -40,6 +50,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_udosr")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ol736"]
+viewport_path = NodePath("ArcadeGameViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bavbb"]
 albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
@@ -88,6 +101,10 @@ material_override = SubResource("StandardMaterial3D_ets56")
 mesh = SubResource("ArrayMesh_f4400")
 skeleton = NodePath("../..")
 
+[node name="Game" type="Sprite3D" parent="MainCabinet"]
+transform = Transform3D(0.0360347, 0.000383828, -0.00785188, -0.000116082, 0.0454338, 0.514108, 0.000354308, -0.0241516, 0.96701, 0.240612, 1.7717, -1.66681)
+texture = SubResource("ViewportTexture_ol736")
+
 [node name="Structures" type="Node3D" parent="."]
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Structures"]
@@ -134,7 +151,7 @@ mesh = SubResource("ArrayMesh_f4400")
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="CabinetLight" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262561, 1.88451, -1.40039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262561, 1.76696, -1.75169)
 light_color = Color(0.960784, 0.972549, 0.964706, 1)
 light_energy = 0.071
 light_size = 1.0
