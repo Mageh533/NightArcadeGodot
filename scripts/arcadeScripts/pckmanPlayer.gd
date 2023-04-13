@@ -14,6 +14,7 @@ func _process(delta):
 	keyboardControls(delta)
 
 # Contiunos movement with no stop
+# Note, try to avoid using this many raycast rays although it probably doesnt affect performance for this too much
 func keyboardControls(delta):
 	if(Input.is_action_pressed("arcade_up") and !$RayCasting/RayUpLeft.is_colliding() and !$RayCasting/RayUpRight.is_colliding()):
 		velocity.x = 0
