@@ -17,4 +17,13 @@ func _on_teleporter_right_body_entered(body):
 
 
 func _on_player_points_changed(points):
-	$UI/ScoreLabel.text = "Score: " + str(points)
+	if(points < 100):
+		$UI/ScoreLabel.text = "Score: " + "0000" + str(points)
+	elif(points < 1000):
+		$UI/ScoreLabel.text = "Score: " + "000" + str(points)
+	elif(points < 10000):
+		$UI/ScoreLabel.text = "Score: " + "00" + str(points)
+	elif(points < 100000):
+		$UI/ScoreLabel.text = "Score: " + "0" + str(points)
+	else:
+		$UI/ScoreLabel.text = "Score: " + str(points)
