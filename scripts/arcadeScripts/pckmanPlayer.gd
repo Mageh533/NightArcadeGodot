@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 signal hit
+signal pointsChanged(points)
 
+var points = 0
 @export var speed = 400
 var screen_size
 
@@ -12,6 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	keyboardControls(delta)
+
+func _physics_process(delta):
+	pass
 
 # Contiunos movement with no stop
 # Note, try to avoid using this many raycast rays although it probably doesnt affect performance for this too much
@@ -41,6 +46,10 @@ func keyboardControls(delta):
 	move_and_slide()
 	position.y = clamp(position.y, 0, screen_size.y)
 	position.x = clamp(position.x, 0, screen_size.x)
+
+func addPoints(newPoints):
+	points += newPoints
+	emit_signal("pointsChanged", points)
 
 func start(startPos):
 	position = startPos
