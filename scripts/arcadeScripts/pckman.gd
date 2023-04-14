@@ -1,10 +1,13 @@
 extends Node2D
 
+var level = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.start($StartPosition.position)
 
+func _process(delta):
+	$Ghost1.set_target($Player.position)
 
 # Teleports any body that reaches the teleporter to the other side of the maze
 
