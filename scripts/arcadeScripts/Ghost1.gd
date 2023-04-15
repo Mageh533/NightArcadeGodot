@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 300
+var speed = 250
 
 var target = Vector2(60.0,180.0)
 

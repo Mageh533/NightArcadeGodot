@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0s81n63qrxnt"
-path="res://.godot/imported/power pill.png-571e25a3278dce510d80dbf83653991c.ctex"
+uid="uid://b6drsh1vwn80k"
+path="res://.godot/imported/ghost1_idle.png-28bae258fa28a2e8c3acd708f506d885.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fonts/power pill.png"
-dest_files=["res://.godot/imported/power pill.png-571e25a3278dce510d80dbf83653991c.ctex"]
+source_file="res://content/2dSprites/ghost1_idle.png"
+dest_files=["res://.godot/imported/ghost1_idle.png-28bae258fa28a2e8c3acd708f506d885.ctex"]
 
 [params]
 
