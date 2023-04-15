@@ -27,10 +27,10 @@ font_size = 44
 resource_name = "Objects"
 scenes/2/scene = ExtResource("3_erofa")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6dxuf"]
-vertices = PackedVector2Array(-4, -3, -3, -32, 2, -32, 1, -3, 0, 3.5, -4, 3, -32, 3.5, -32, -2, 32, -3, 32, 2, -3.5, 32, -0.5, 32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 6, 7, 0), PackedInt32Array(3, 8, 9, 4), PackedInt32Array(10, 5, 4, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-3, -32, -4, -3, -32, -2, -32, 3.5, -4, 3, -3.5, 32, -0.5, 32, 0, 3.5, 32, 2, 32, -3, 1, -3, 2, -32)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sait0"]
+vertices = PackedVector2Array(-32, 1, -32, -1, -1, -1, -1, 1, -1, -32, 1, -32, 1, -1, 1, 1, 32, -1, 32, 1, 1, 32, -1, 32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(3, 2, 6, 7), PackedInt32Array(6, 8, 9, 7), PackedInt32Array(3, 7, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -1, -1, -1, -1, -32, 1, -32, 1, -1, 32, -1, 32, 1, 1, 1, 1, 32, -1, 32, -1, 1, -32, 1)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44iyx"]
 texture = ExtResource("1_tjjve")
@@ -107,7 +107,7 @@ texture_region_size = Vector2i(64, 64)
 2:3/0 = 0
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:3/0/physics_layer_0/angular_velocity = 0.0
-2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6dxuf")
+2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_sait0")
 
 [sub_resource type="TileSet" id="TileSet_e2w6y"]
 tile_size = Vector2i(64, 64)
@@ -247,7 +247,7 @@ script = ExtResource("4_d0s4h")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(84, 77)
 scale = Vector2(0.996224, 0.995148)
-collision_mask = 6
+collision_mask = 2
 slide_on_ceiling = false
 floor_stop_on_slope = false
 platform_floor_layers = 4294967289
