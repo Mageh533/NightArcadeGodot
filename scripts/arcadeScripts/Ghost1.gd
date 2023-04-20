@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 250
+@export var speed = 250
 
 var target = Vector2(60.0,180.0)
 
@@ -29,6 +29,7 @@ func _physics_process(delta):
 	var new_velocity: Vector2 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity * speed
+	new_velocity = new_velocity * delta * 50
 
 	set_velocity(new_velocity)
 

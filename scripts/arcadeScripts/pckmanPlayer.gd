@@ -15,9 +15,6 @@ func _ready():
 func _process(delta):
 	keyboardControls(delta)
 
-func _physics_process(delta):
-	pass
-
 # Contiunos movement with no stop
 # Note, try to avoid using this many raycast rays although it probably doesnt affect performance for this too much
 func keyboardControls(delta):
@@ -42,6 +39,7 @@ func keyboardControls(delta):
 	
 	if(velocity.length() > 0):
 		velocity = velocity.normalized() * speed
+		velocity = velocity * delta * 100
 	
 	move_and_slide()
 	position.y = clamp(position.y, 0, screen_size.y)

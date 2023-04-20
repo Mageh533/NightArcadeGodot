@@ -191,9 +191,11 @@ animations = [{
 radius = 26.0768
 
 [node name="pckman" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_8s2sq")
 
 [node name="UI" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1915.0
@@ -214,11 +216,18 @@ color = Color(0, 0, 0, 1)
 
 [node name="ScoreLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 740.0
+offset_left = 767.0
 offset_top = 8.0
-offset_right = 1140.0
+offset_right = 1167.0
 offset_bottom = 113.0
-text = "Score: 000000"
+label_settings = SubResource("LabelSettings_b6lb1")
+
+[node name="ScoreLabel2" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 8.0
+offset_right = 1167.0
+offset_bottom = 113.0
 label_settings = SubResource("LabelSettings_b6lb1")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -311,7 +320,7 @@ target_position = Vector2(28.2584, 45.407)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="WallCollision" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.000119925, 1.00488)
 shape = SubResource("CircleShape2D_ru4pj")
 debug_color = Color(0.905882, 0.203922, 0.568627, 0.419608)
@@ -360,10 +369,10 @@ avoidance_enabled = true
 radius = 52.68
 neighbor_distance = 30.0
 max_neighbors = 20
-debug_enabled = true
 debug_path_custom_point_size = 17.41
 debug_path_custom_line_width = 0.55
 
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="pointsChanged" from="Player" to="." method="_on_player_points_changed"]
 [connection signal="body_entered" from="Teleporters/TeleporterLeft" to="." method="_on_teleporter_left_body_entered"]
 [connection signal="body_entered" from="Teleporters/TeleporterRight" to="." method="_on_teleporter_right_body_entered"]

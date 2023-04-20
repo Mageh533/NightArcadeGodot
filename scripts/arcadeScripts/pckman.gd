@@ -6,7 +6,7 @@ var level = 0
 func _ready():
 	$Player.start($StartPosition.position)
 
-func _process(delta):
+func _process(_delta):
 	$Ghost1.set_target($Player.position)
 
 # Teleports any body that reaches the teleporter to the other side of the maze
@@ -20,13 +20,14 @@ func _on_teleporter_right_body_entered(body):
 
 
 func _on_player_points_changed(points):
-	if(points < 100):
-		$UI/ScoreLabel.text = "Score: " + "0000" + str(points)
-	elif(points < 1000):
-		$UI/ScoreLabel.text = "Score: " + "000" + str(points)
-	elif(points < 10000):
-		$UI/ScoreLabel.text = "Score: " + "00" + str(points)
-	elif(points < 100000):
-		$UI/ScoreLabel.text = "Score: " + "0" + str(points)
-	else:
-		$UI/ScoreLabel.text = "Score: " + str(points)
+	var acceptedLength = 8 - str(points).length()
+	var emptyZeroes = ""
+	
+	while(emptyZeroes.length() < acceptedLength):
+		emptyZeroes += "0"
+	
+	$UI/ScoreLabel.text = emptyZeroes + str(points)
+
+
+func _on_player_hit():
+	get_tree().paused = true
