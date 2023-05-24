@@ -4,15 +4,19 @@ var level = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player.start($StartPosition.position)
-	$Player.visible = false
-	$Ghosts.visible = false
-	get_tree().paused = true
+	setUpFirstRound()
 
 func _process(_delta):
 	$Ghosts/Ghost1.set_target($Player.position)
 
 # Teleports any body that reaches the teleporter to the other side of the maze
+
+func setUpFirstRound():
+	$Player.start($StartPosition.position)
+	$Player.visible = false
+	$Ghosts.visible = false
+	$UI/ClearLaber.visible = false
+	get_tree().paused = true
 
 func levelComplete():
 	$NextRoundTimer.start()
@@ -52,3 +56,4 @@ func _on_round_start_timer_visibles_timeout():
 
 func _on_next_round_timer_timeout():
 	$Ghosts.visible = false
+	$UI/ClearLaber.visible = false
