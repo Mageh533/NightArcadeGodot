@@ -19,10 +19,6 @@
 [ext_resource type="Script" path="res://scripts/arcadeScripts/Ghost1.gd" id="17_pvnqc"]
 [ext_resource type="Texture2D" uid="uid://b6drsh1vwn80k" path="res://content/2dSprites/ghost1_idle.png" id="18_nrx5m"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_b6lb1"]
-font = ExtResource("2_jvwb1")
-font_size = 44
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rut8t"]
 resource_name = "Objects"
 scenes/2/scene = ExtResource("3_erofa")
@@ -190,45 +186,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_midcq"]
 radius = 26.0768
 
+[sub_resource type="LabelSettings" id="LabelSettings_b6lb1"]
+font = ExtResource("2_jvwb1")
+font_size = 44
+
 [node name="pckman" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_8s2sq")
-
-[node name="UI" type="Control" parent="."]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1915.0
-offset_bottom = 1077.0
-
-[node name="Background" type="ColorRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 3.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ScoreLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 767.0
-offset_top = 8.0
-offset_right = 1167.0
-offset_bottom = 113.0
-label_settings = SubResource("LabelSettings_b6lb1")
-
-[node name="ScoreLabel2" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 767.0
-offset_top = 8.0
-offset_right = 1167.0
-offset_bottom = 113.0
-label_settings = SubResource("LabelSettings_b6lb1")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 3)
@@ -250,7 +214,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(720910, 0, 131072, 786446, 0, 131072, 851982, 0, 131072, 851981, 0, 131072, 851980, 0, 131072, 851979, 0, 131072, 786443, 0, 131072, 720907, 0, 131072, 720906, 0, 131072, 720905, 0, 131072, 786441, 0, 131072, 851977, 0, 131072, 851976, 0, 131072, 851975, 0, 131072, 851974, 0, 131072, 851973, 0, 131072, 786437, 0, 131072, 720901, 0, 131072, 655365, 0, 131072, 655366, 0, 131072, 655367, 0, 131072, 720903, 0, 131072, 720904, 0, 131072, 589831, 0, 131072, 589832, 0, 131072, 589833, 0, 131072, 524297, 0, 131072, 458761, 0, 131072, 458760, 0, 131072, 458759, 0, 131072, 393223, 0, 131072, 327687, 0, 131072, 327688, 0, 131072, 327689, 0, 131072, 393225, 0, 131072, 327686, 0, 131072, 327685, 0, 131072, 393221, 0, 131072, 458757, 0, 131072, 524293, 0, 131072, 589829, 0, 131072, 262149, 0, 131072, 196613, 0, 131072, 131077, 0, 131072, 131078, 0, 131072, 131079, 0, 131072, 131080, 0, 131072, 131081, 0, 131072, 196617, 0, 131072, 262153, 0, 131072, 196618, 0, 131072, 196619, 0, 131072, 131083, 0, 131072, 131084, 0, 131072, 131085, 0, 131072, 196621, 0, 131072, 262157, 0, 131072, 327693, 0, 131072, 327692, 0, 131072, 327691, 0, 131072, 262155, 0, 131072, 393227, 0, 131072, 458763, 0, 131072, 524299, 0, 131072, 589835, 0, 131072, 655371, 0, 131072, 458762, 0, 131072, 589836, 0, 131072, 589837, 0, 131072, 655373, 0, 131072, 720909, 0, 131072, 720911, 0, 131072, 655375, 0, 131072, 589839, 0, 131072, 589840, 0, 131072, 589841, 0, 131072, 655377, 0, 131072, 720913, 0, 131072, 786449, 0, 131072, 851985, 0, 131072, 851984, 0, 131072, 851983, 0, 131072, 720914, 0, 131072, 720915, 0, 131072, 786451, 0, 131072, 851987, 0, 131072, 851988, 0, 131072, 851989, 0, 131072, 851990, 0, 131072, 851991, 0, 131072, 786455, 0, 131072, 720919, 0, 131072, 655383, 0, 131072, 655382, 0, 131072, 655381, 0, 131072, 720917, 0, 131072, 720916, 0, 131072, 589845, 0, 131072, 589844, 0, 131072, 589843, 0, 131072, 524307, 0, 131072, 458771, 0, 131072, 458770, 0, 131072, 458769, 0, 131072, 524305, 0, 131072, 393233, 0, 131072, 327697, 0, 131072, 262161, 0, 131072, 196625, 0, 131072, 131089, 0, 131072, 131088, 0, 131072, 196623, 0, 131072, 262159, 0, 131072, 327695, 0, 131072, 327696, 0, 131072, 131087, 0, 131072, 196626, 0, 131072, 196627, 0, 131072, 131091, 0, 131072, 131092, 0, 131072, 131093, 0, 131072, 131094, 0, 131072, 131095, 0, 131072, 196631, 0, 131072, 262167, 0, 131072, 327703, 0, 131072, 327702, 0, 131072, 327701, 0, 131072, 327700, 0, 131072, 327699, 0, 131072, 262163, 0, 131072, 393235, 0, 131072, 458772, 0, 131072, 458773, 0, 131072, 393237, 0, 131072, 393239, 0, 131072, 458775, 0, 131072, 524311, 0, 131072, 589847, 0, 131072)
+layer_2/tile_data = PackedInt32Array(786446, 0, 131072, 851982, 0, 131072, 851981, 0, 131072, 851980, 0, 131072, 851979, 0, 131072, 786443, 0, 131072, 720907, 0, 131072, 720906, 0, 131072, 720905, 0, 131072, 786441, 0, 131072, 851977, 0, 131072, 851976, 0, 131072, 851975, 0, 131072, 851974, 0, 131072, 851973, 0, 131072, 786437, 0, 131072, 720901, 0, 131072, 655365, 0, 131072, 655366, 0, 131072, 655367, 0, 131072, 720903, 0, 131072, 720904, 0, 131072, 589831, 0, 131072, 589832, 0, 131072, 589833, 0, 131072, 524297, 0, 131072, 458761, 0, 131072, 458760, 0, 131072, 458759, 0, 131072, 393223, 0, 131072, 327687, 0, 131072, 327688, 0, 131072, 327689, 0, 131072, 393225, 0, 131072, 327686, 0, 131072, 327685, 0, 131072, 393221, 0, 131072, 458757, 0, 131072, 524293, 0, 131072, 589829, 0, 131072, 262149, 0, 131072, 196613, 0, 131072, 131077, 0, 131072, 131078, 0, 131072, 131079, 0, 131072, 131080, 0, 131072, 131081, 0, 131072, 196617, 0, 131072, 262153, 0, 131072, 196618, 0, 131072, 196619, 0, 131072, 131083, 0, 131072, 131084, 0, 131072, 131085, 0, 131072, 196621, 0, 131072, 262157, 0, 131072, 327693, 0, 131072, 327692, 0, 131072, 327691, 0, 131072, 262155, 0, 131072, 393227, 0, 131072, 458763, 0, 131072, 524299, 0, 131072, 589835, 0, 131072, 655371, 0, 131072, 458762, 0, 131072, 589836, 0, 131072, 589837, 0, 131072, 655373, 0, 131072, 720909, 0, 131072, 720911, 0, 131072, 655375, 0, 131072, 589839, 0, 131072, 589840, 0, 131072, 589841, 0, 131072, 655377, 0, 131072, 720913, 0, 131072, 786449, 0, 131072, 851985, 0, 131072, 851984, 0, 131072, 851983, 0, 131072, 720914, 0, 131072, 720915, 0, 131072, 786451, 0, 131072, 851987, 0, 131072, 851988, 0, 131072, 851989, 0, 131072, 851990, 0, 131072, 851991, 0, 131072, 786455, 0, 131072, 720919, 0, 131072, 655383, 0, 131072, 655382, 0, 131072, 655381, 0, 131072, 720917, 0, 131072, 720916, 0, 131072, 589845, 0, 131072, 589844, 0, 131072, 589843, 0, 131072, 524307, 0, 131072, 458771, 0, 131072, 458770, 0, 131072, 458769, 0, 131072, 524305, 0, 131072, 393233, 0, 131072, 327697, 0, 131072, 262161, 0, 131072, 196625, 0, 131072, 131089, 0, 131072, 131088, 0, 131072, 196623, 0, 131072, 262159, 0, 131072, 327695, 0, 131072, 327696, 0, 131072, 131087, 0, 131072, 196626, 0, 131072, 196627, 0, 131072, 131091, 0, 131072, 131092, 0, 131072, 131093, 0, 131072, 131094, 0, 131072, 131095, 0, 131072, 196631, 0, 131072, 262167, 0, 131072, 327703, 0, 131072, 327702, 0, 131072, 327701, 0, 131072, 327700, 0, 131072, 327699, 0, 131072, 262163, 0, 131072, 393235, 0, 131072, 458772, 0, 131072, 458773, 0, 131072, 393237, 0, 131072, 393239, 0, 131072, 458775, 0, 131072, 524311, 0, 131072, 589847, 0, 131072)
 script = ExtResource("4_d0s4h")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -349,21 +313,23 @@ position = Vector2(68, 483)
 [node name="ExitPosRight" type="Marker2D" parent="Teleporters"]
 position = Vector2(1763, 481)
 
-[node name="Ghost1" type="CharacterBody2D" parent="."]
+[node name="Ghosts" type="Node2D" parent="."]
+
+[node name="Ghost1" type="CharacterBody2D" parent="Ghosts"]
 position = Vector2(929, 475)
 collision_layer = 4
 collision_mask = 2
 floor_stop_on_slope = false
 script = ExtResource("17_pvnqc")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ghost1"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Ghosts/Ghost1"]
 scale = Vector2(0.073, 0.073)
 sprite_frames = SubResource("SpriteFrames_mhpip")
 
-[node name="Collision" type="CollisionShape2D" parent="Ghost1"]
+[node name="Collision" type="CollisionShape2D" parent="Ghosts/Ghost1"]
 shape = SubResource("CircleShape2D_midcq")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Ghost1"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Ghosts/Ghost1"]
 path_max_distance = 300.0
 avoidance_enabled = true
 radius = 52.68
@@ -372,7 +338,67 @@ max_neighbors = 20
 debug_path_custom_point_size = 17.41
 debug_path_custom_line_width = 0.55
 
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1915.0
+offset_bottom = 1077.0
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 8.0
+offset_right = 1167.0
+offset_bottom = 113.0
+label_settings = SubResource("LabelSettings_b6lb1")
+
+[node name="ScoreLabel2" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 8.0
+offset_right = 1167.0
+offset_bottom = 113.0
+label_settings = SubResource("LabelSettings_b6lb1")
+
+[node name="GameStartLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 518.0
+offset_right = 1087.0
+offset_bottom = 577.0
+text = "Game Start!"
+label_settings = SubResource("LabelSettings_b6lb1")
+
+[node name="ClearLaber" type="Label" parent="UI"]
+offset_left = 831.0
+offset_top = 520.0
+offset_right = 1011.0
+offset_bottom = 579.0
+text = "CLEAR!"
+label_settings = SubResource("LabelSettings_b6lb1")
+
+[node name="RoundStartTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="RoundStartTimerVisibles" type="Timer" parent="."]
+process_mode = 3
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="NextRoundTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 2.0
+one_shot = true
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="pointsChanged" from="Player" to="." method="_on_player_points_changed"]
 [connection signal="body_entered" from="Teleporters/TeleporterLeft" to="." method="_on_teleporter_left_body_entered"]
 [connection signal="body_entered" from="Teleporters/TeleporterRight" to="." method="_on_teleporter_right_body_entered"]
+[connection signal="timeout" from="RoundStartTimer" to="." method="_on_round_start_timer_timeout"]
+[connection signal="timeout" from="RoundStartTimerVisibles" to="." method="_on_round_start_timer_visibles_timeout"]
+[connection signal="timeout" from="NextRoundTimer" to="." method="_on_next_round_timer_timeout"]
